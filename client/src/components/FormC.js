@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import Result from './Result'
+
 
 function FormC() {
     let [day,setDay]=useState('Choose the day')
@@ -54,16 +54,22 @@ function FormC() {
         err=(_to-_from)>3?true:err
         if(err){
             console.log('something wrong')
+            setRes("Not correct input options")
         }else{
-            console.log(`day:${day} from ${fromTime}:to ${toTime} name:${name}`)
+            
+            setRes(`day:${day} from ${fromTime}:to ${toTime} name:${name}`)
+            setDay('Choose the day')
+            setFromTime('Choose from time')
+            setToTime('Choose to time')
+            setName('Choose band name')
         }
         
     }
     
     return (
-        <div>
+        <div id="formc">
             <form onSubmit={onSubmit}>
-                <div>
+                <div id="day">
                     <select onChange={onChangeD}>
                         <option key="choose the day">Choose the day</option>
                         <option key="1">1</option>
@@ -74,7 +80,7 @@ function FormC() {
                     </select>
 
                 </div>
-                <div>
+                <div id="time">
                     <select onChange={onChangeF}>
                         <option key="from" value="from">Choose from time</option>
                         {chooseF()}
@@ -84,7 +90,7 @@ function FormC() {
                         {chooseT()}
                     </select>
                 </div>
-                <div>
+                <div id="name">
                 <select onChange={onChangeN}>
                         <option key="name band">Choose band name</option>
                         <option key="a">A</option>
@@ -98,9 +104,12 @@ function FormC() {
                     </select>
 
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit">+</button>
                 
             </form>
+            <div id="result">
+                <h2>{res}</h2>
+            </div>
             
             
         </div>
