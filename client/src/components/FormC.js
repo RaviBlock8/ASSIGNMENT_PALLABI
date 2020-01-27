@@ -21,9 +21,11 @@ function FormC() {
         return;
         if(fromTime<10)
         _fromTime=fromTime+12
+        let counter=1
 
         return time.map((t)=>{
-            if(t>_fromTime){
+            if(t>_fromTime&&counter<=3){
+                counter+=1;
                 return (t>12?<option key={t-12}>{t-12}</option>:<option key={t}>{t}</option>)
             }
         })
