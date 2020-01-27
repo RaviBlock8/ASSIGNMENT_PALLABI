@@ -55,13 +55,16 @@ function FormC() {
         if(err){
             console.log('something wrong')
             setRes("Not correct input options")
+            e.target.reset()
+            
         }else{
             
-            setRes(`day:${day} from ${fromTime}:to ${toTime} name:${name}`)
+            setRes(`day:${day} from ${fromTime} :to ${toTime} Band name:${name}`)
             setDay('Choose the day')
             setFromTime('Choose from time')
             setToTime('Choose to time')
             setName('Choose band name')
+            e.target.reset()
         }
         
     }
