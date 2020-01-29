@@ -1,12 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 
 
 function FormC() {
-    let [day,setDay]=useState('Choose the day')
-    let [toTime,setToTime]=useState('Choose from time')
-    let [fromTime,setFromTime]=useState('Choose to time')
-    let [name,setName]=useState('Choose band name')
-    let [res,setRes]=useState('No band assigned')
+    
+        let [day,setDay]=useState('Choose the day')
+        let [toTime,setToTime]=useState('Choose to time')
+        let [fromTime,setFromTime]=useState('Choose from time')
+        let [name,setName]=useState('Choose band name')
+        let [res,setRes]=useState('No band assigned')
+    console.log('values are being set')
+    
     let time=[10,11,12,13,14,15,16,17,18]
 
     let chooseF=()=>{
@@ -51,9 +54,12 @@ function FormC() {
         let err=false
         let _to=toTime<10?toTime+12:toTime
         let _from=fromTime<10?fromTime+12:fromTime
-        err= day=='Choose the day'?true:err
-        err= _from=='Choose from time'?true:err
+        err= day==='Choose the day'?true:err
+        console.log(`after day check err value:${err}`)
+        err= fromTime==='Choose from time'?true:err
+        console.log(`after from check err value:${err} and val ${fromTime}`)
         err=(_to-_from)>3?true:err
+        console.log(`after duration check err value:${err}`)
         if(err){
             console.log('something wrong')
             setRes("Not correct input options")
@@ -87,11 +93,11 @@ function FormC() {
                 </div>
                 <div id="time">
                     <select onChange={onChangeF}>
-                        <option key="from" value="from">Choose from time</option>
+                        <option key="from" value="Choose from time">Choose from time</option>
                         {chooseF()}
                     </select>
                     <select onChange={onChangeT}>
-                        <option key="to" value="to">Choose to time</option>
+                        <option key="to" value="Choose to time">Choose to time</option>
                         {chooseT()}
                     </select>
                 </div>
