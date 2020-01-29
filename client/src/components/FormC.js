@@ -58,8 +58,10 @@ function FormC() {
         console.log(`after day check err value:${err}`)
         err= fromTime==='Choose from time'?true:err
         console.log(`after from check err value:${err} and val ${fromTime}`)
+        err= toTime==='Choose to time'?true:err
         err=(_to-_from)>3?true:err
         console.log(`after duration check err value:${err}`)
+        err= name==='Choose band name'?true:err
         if(err){
             console.log('something wrong')
             setRes("Not correct input options")
